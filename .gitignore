@@ -1,0 +1,5 @@
+/.idea/*
+/.venv/*
+BDDWorkshopInit.iml
+poetry.lock
+test_api/__pycache__/*
