@@ -1,6 +1,6 @@
 # Instalacja
 
-1. Zainstaluj Poetry: 
+1. Zainstaluj Poetry:  https://python-poetry.org/docs/#installation
 
 2. Uruchom: `poetry update`
 
