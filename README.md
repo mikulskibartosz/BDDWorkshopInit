@@ -2,11 +2,13 @@ W celu przygotowania środowiska przed warsztatem wykonaj **wszystkie** kroki z 
 
 # Instalacja
 
-0. Sklonuj to repozytorium: `git clone git@github.com:mikulskibartosz/BDDWorkshopInit.git`.
+0. Przeczytaj wszystkie kroki instrukcji **zanim** zaczniesz je wykonywać.
 
-1. Zainstaluj Poetry: https://python-poetry.org/docs/#installation
+1. Sklonuj to repozytorium: `git clone git@github.com:mikulskibartosz/BDDWorkshopInit.git`.
 
-2. Uruchom: `poetry update`. Zobaczysz taki rezultat:
+2. Zainstaluj Poetry: https://python-poetry.org/docs/#installation (można pominąć jeśli już używasz Poetry)
+
+3. W katalogu z projektem uruchom: `poetry update`. Zobaczysz taki rezultat:
 
 ```
 Package operations: 30 installs, 0 updates, 0 removals
@@ -43,7 +45,7 @@ Package operations: 30 installs, 0 updates, 0 removals
   - Installing pytest (6.2.2)
 ```
 
-3. Jeśli używasz IntelliJ, dodaj środowisko virtualenv w projekcie:
+4. Jeśli używasz IntelliJ, dodaj środowisko virtualenv w projekcie:
 
 * Otwórz katalog z tym projektem w Intellij i zaczekaj na zaindeksowanie projektu
 
@@ -52,10 +54,14 @@ Package operations: 30 installs, 0 updates, 0 removals
   * File -> Project structure
 
   * Dodaj nowe SDK: ![Ustawienie SKD](img/new_sdk.png)
+  
+  * Jeśli na liście SDK nie ma `Python SDK`, zainstaluj plugin `Python` w IntelliJ.
 
   * Dodaj python3 z katalogu `.venv` jako interpreter Pythona ![Interpreter z .venv](img/interpreter.png)
 
-5. Jeśli używasz innego IDE, również użyj `.venv` jako środowiska do uruchamiania 
+5. (opcjonalnie) Zainstaluj plugin `Gherkin` w IntelliJ.
+
+6. Jeśli używasz innego IDE, również użyj `.venv` jako środowiska do uruchamiania.
 
 # Testowanie konfiguracji
 
