@@ -11,4 +11,7 @@ Feature: User posts tweets
     When Alive retrieves the feed
     Then Alice sees Bob's tweets
 
-  Scenario: XXXXX
+  Scenario: users post a new tweet
+    Given Alice follows Bob
+    When Bob sends a new tweet
+    Then Alice sees the new tweet
