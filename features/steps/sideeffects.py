@@ -48,17 +48,23 @@ def step_impl(context):
 
 @given(u'one power outlet powering a fridge')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Given one power outlet powering a fridge')
+    context.fridge_power_outlet = PowerOutlet()
+    context.fridge_power_outlet.device = MagicMock(return_value='fridge')
+    context.fridge_power_outlet.shut_off = MagicMock()
 
 
 @given(u'there are no people in the building')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Given there are no people in the building')
+    cameras = SecurityCameras()
+    cameras.count_people_in_the_building = MagicMock(return_value=0)
+    context.cameras = cameras
 
 
 @when(u'the door is locked')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: When the door is locked')
+    # SmartHome()
+# DoorLock
+# dl.lock()
 
 
 @then(u'shut off all power outlets')
