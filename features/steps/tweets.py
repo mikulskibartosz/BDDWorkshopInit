@@ -7,6 +7,10 @@ def retrieve_feed():
     return response.json()
 
 
+def alice_follows_bob():
+    requests.put('http://0.0.0.0:5000/api/followed/Alice/Bob')
+
+
 @given(u'Alice doesn\'t follow anyone')
 def step_impl(context):
     requests.delete('http://0.0.0.0:5000/api/followed')
@@ -21,11 +25,12 @@ def step_impl(context):
 def step_impl(context):
     assert len(context.feed) == 0
 
+
 @given(u'Alice follows Bob')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Given Alice follows Bob')
+    alice_follows_bob()
 
 
 @then(u'Alice sees Bob\'s tweets')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then Alice sees Bob\'s tweets')
+    assert len(context.feed) == 1

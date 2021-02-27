@@ -1,3 +1,4 @@
+@rest
 Feature: User posts tweets
 
   Scenario: user who does not follow anyone does not see tweets
