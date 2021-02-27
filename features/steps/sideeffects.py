@@ -62,13 +62,15 @@ def step_impl(context):
 
 @when(u'the door is locked')
 def step_impl(context):
-    # SmartHome()
-# DoorLock
-# dl.lock()
+    object_under_test = SmartHome(context.cameras, context.generic_power_outlets + [context.fridge_power_outlet])
+
+    lock = DoorLock([object_under_test])
+    lock.lock()
 
 
 @then(u'shut off all power outlets')
 def step_impl(context):
+    #assert_called() / assert_not_called()
     raise NotImplementedError(u'STEP: Then shut off all power outlets')
 
 
