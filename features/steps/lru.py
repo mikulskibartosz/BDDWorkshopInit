@@ -8,10 +8,7 @@ class LRU:
         self.list = []
 
     def add_element(self, other):
-        self.list.append(other)
-
-    def __add__(self, other):
-        self.list.append(other)
+        self.list.insert(0, other)
 
     def __iter__(self):
         yield from self.list
@@ -34,6 +31,8 @@ def step_impl(context):
     else:
         context.added_elements = [new_element]
 
+    context.last_element = new_element
+
     context.object_under_test.add_element(new_element)
 
 
@@ -41,8 +40,7 @@ def step_impl(context):
 def step_impl(context):
     print(context.object_under_test)
     print(context.added_elements)
-    actual = [x for x in context.object_under_test]
-    assert actual == context.added_elements
+    assert list(context.object_under_test) == context.added_elements
 
 
 @given(u'the list is not empty')
@@ -55,13 +53,14 @@ def step_impl(context):
 
 @then(u'the list contains the old elements and the new one')
 def step_impl(context):
-    actual = [x for x in context.object_under_test]
-    assert actual == context.added_elements
+    assert set(context.object_under_test) == set(context.added_elements)
 
 
 @then(u'the list contains added file at first position')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then the list contains added file at first position')
+    print(list(context.object_under_test))
+    print(context.last_element)
+    assert list(context.object_under_test)[0] == context.last_element
 
 
 @given(u'the list of files with the duplicatable element at the last position')
