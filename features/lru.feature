@@ -14,11 +14,11 @@ Feature: LRU
     Given the list is not empty
     When we add a file to the list
     Then the list contains added file at first position
-
-  Scenario: a duplicate is added to the list
-    Given the list of files with the duplicatable element at the last position
-    When we add a a duplicate to the list
-    Then the file is visible only once one the list
+#
+#  Scenario: a duplicate is added to the list
+#    Given the list of files with the duplicatable element at the last position
+#    When we add a a duplicate to the list
+#    Then the file is visible only once one the list
 
 #  Scenario: a duplicate is added to the list on the top of the list
 #    Given the list of files
@@ -26,11 +26,11 @@ Feature: LRU
 #    Then the file is visible only once one the list
 #    And file is on the top of the list
 
-  Scenario: the list has a max size od 5
-    Given the list has 5 element
-    When add a new file
-    Then list has 5 elements
-    And a new file is on list
+#  Scenario: the list has a max size od 5
+#    Given the list has 5 element
+#    When add a new file
+#    Then list has 5 elements
+#    And a new file is on list
 
 #  Scenario: Adding element to the list with 4 elements
 #    Given the list has 4 elements added

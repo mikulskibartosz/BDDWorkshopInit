@@ -1,9 +1,24 @@
+import random
+import string
 from behave import *
 
 
 class LRU:
     def __init__(self):
-        pass
+        self.list = []
+
+    def add_element(self, other):
+        self.list.append(other)
+
+    def __add__(self, other):
+        self.list.append(other)
+
+    def __iter__(self):
+        yield from self.list
+
+
+def _random_string():
+    return ''.join(random.choice(string.ascii_uppercase) for _ in range(8))
 
 
 @given(u'the list is empty')
@@ -13,24 +28,35 @@ def step_impl(context):
 
 @when(u'we add a file to the list')
 def step_impl(context):
-    context.added_element = 'element'
-    context.object_under_test
-    raise NotImplementedError(u'STEP: When we add a file to the list')
+    new_element = _random_string()
+    if 'added_elements' in context:
+        context.added_elements.append(new_element)
+    else:
+        context.added_elements = [new_element]
+
+    context.object_under_test.add_element(new_element)
 
 
 @then(u'the list contains only the added file')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then the list contains only the added file')
+    print(context.object_under_test)
+    print(context.added_elements)
+    actual = [x for x in context.object_under_test]
+    assert actual == context.added_elements
 
 
 @given(u'the list is not empty')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Given the list is not empty')
+    context.execute_steps(u"""
+    Given the list is empty
+    When we add a file to the list
+    """)
 
 
 @then(u'the list contains the old elements and the new one')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then the list contains the old elements and the new one')
+    actual = [x for x in context.object_under_test]
+    assert actual == context.added_elements
 
 
 @then(u'the list contains added file at first position')
