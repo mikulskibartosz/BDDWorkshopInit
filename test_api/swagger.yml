@@ -17,3 +17,17 @@ paths:
       responses:
         200:
           description: "hello, world"
+
+  /feed:
+    get:
+      operationId: "tweets.get"
+      responses:
+        200:
+          description: "Feed"
+
+  /followed:
+    delete:
+      operationId: "followed.deleteAll"
+      responses:
+        200:
+          description: "Remove all followed"
