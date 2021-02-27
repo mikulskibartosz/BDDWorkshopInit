@@ -21,3 +21,11 @@ def step_impl(context):
 def step_impl(context):
     assert len(context.feed) == 0
 
+@given(u'Alice follows Bob')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Given Alice follows Bob')
+
+
+@then(u'Alice sees Bob\'s tweets')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Then Alice sees Bob\'s tweets')
