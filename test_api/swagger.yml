@@ -24,6 +24,24 @@ paths:
       responses:
         200:
           description: "Feed"
+    post:
+      operationId: "tweets.add"
+      responses:
+        200:
+          description: "Add a tweet"
+      consumes:
+        - application/json
+      parameters:
+        - name: "tweet"
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - tweet
+            properties:
+              tweet:
+                type: string
 
   /followed/{following}/{followed}:
     put:

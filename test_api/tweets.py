@@ -1,4 +1,5 @@
 from followed import does_alice_follow_bob
+import connexion
 
 
 def get():
@@ -6,3 +7,8 @@ def get():
         return [{'usernam': 'Bob'}]
     else:
         return []
+
+
+def add():
+    tweet = connexion.request.json['tweet']
+    pass
