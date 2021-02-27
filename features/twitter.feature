@@ -13,5 +13,6 @@ Feature: User posts tweets
 
   Scenario: users post a new tweet
     Given Alice follows Bob
-    When Bob sends a new tweet
+    And Bob sends a new tweet
+    When Alive retrieves the feed
     Then Alice sees the new tweet

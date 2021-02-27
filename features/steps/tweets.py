@@ -33,14 +33,17 @@ def step_impl(context):
 
 @then(u'Alice sees Bob\'s tweets')
 def step_impl(context):
-    assert len(context.feed) == 1
+    assert len(context.feed) > 0
 
 
-@when(u'Bob sends a new tweet')
+@given(u'Bob sends a new tweet')
 def step_impl(context):
-    requests.post('http://0.0.0.0:5000/api/feed', json={'tweet': 'some new tweet'})
+    context.new_tweet = 'some new tweet'
+    requests.post('http://0.0.0.0:5000/api/feed', json={'tweet': context.new_tweet})
 
 
 @then(u'Alice sees the new tweet')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then Alice sees the new tweet')
+    print(context.feed)
+    filtered_feed = [x for x in context.feed if x['tweet'] == context.new_tweet]
+    assert len(filtered_feed) == 1
