@@ -70,10 +70,10 @@ def step_impl(context):
 
 @then(u'shut off all power outlets')
 def step_impl(context):
-    #assert_called() / assert_not_called()
-    raise NotImplementedError(u'STEP: Then shut off all power outlets')
+    for power_outlet in context.generic_power_outlets:
+        power_outlet.shut_off.assert_called()
 
 
 @then(u'keep the fridge running')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then keep the fridge running')
+    context.fridge_power_outlet.shut_off.assert_not_called()
