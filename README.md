@@ -10,6 +10,8 @@ W celu przygotowania środowiska przed warsztatem wykonaj **wszystkie** kroki z 
 
 3. `pipenv shell`, a następnie `pipenv install -dev`
 
+Jeśli Python 3.8 nie jest zainstalowany, zainstaluj Python 3.8 (używając instrukcji dla właściwego systemu operacyjnego: https://www.python.org/downloads/) i użyj polecenia `pipenv --python [ścieżka do Python 3.8]` np. `pipenv --python /usr/local/opt/python@3.8/bin/python3`
+
 4. Jeśli używasz IntelliJ, dodaj środowisko Pipenv w projekcie:
 
 * Otwórz katalog z tym projektem w Intellij i zaczekaj na zaindeksowanie projektu
