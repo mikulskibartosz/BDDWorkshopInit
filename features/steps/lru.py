@@ -10,7 +10,9 @@ class Lru:
         return len(self.list)
 
     def add(self, file_name):
-        # jeżeli file_name jest już na liście: to go usuwamy przed dodaniem nowego
+        if file_name in self.list:
+            del self.list[self.list.index(file_name)]
+
         self.list.insert(0, file_name)
 
         if self.size() > self.max_length:
