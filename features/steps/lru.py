@@ -10,7 +10,11 @@ class Lru:
         return len(self.list)
 
     def add(self, file_name):
+        # jeżeli file_name jest już na liście: to go usuwamy przed dodaniem nowego
         self.list.insert(0, file_name)
+
+        if self.size() > self.max_length:
+            self.list.pop()
 
     def get(self, index):
         return self.list[index]
@@ -79,4 +83,16 @@ def step_impl(context):
 
 @then(u'the last element is removed')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then the last element is removed')
+    assert context.list.size() == context.list.max_length
+    assert 'file_0' not in context.list.list
+
+
+@when(u'we add a new element that exists in the list')
+def step_impl(context):
+    context.more_recent_file = 'file_2'
+    context.list.add('file_2')
+
+
+@then(u'the list does not contain a duplicate')
+def step_impl(context):
+    assert context.list.list.count(context.more_recent_file) == 1

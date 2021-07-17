@@ -21,3 +21,9 @@ Feature: Least Recently Used Files
     When we add another file
     Then a new file is on the first position
     And the last element is removed
+
+  Scenario: remove duplicates
+    Given a list with five elements
+    When we add a new element that exists in the list
+    Then the list does not contain a duplicate
+    And a new file is on the first position
