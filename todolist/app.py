@@ -4,6 +4,7 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 tasks = []
+next_id = 0
 
 
 @app.route('/tasks')
@@ -15,9 +16,10 @@ def get_tasks():
 @app.route('/tasks', methods=['POST'])
 def create_task():
     global tasks
+    global next_id
     task = request.get_json()
-    task_id = len(tasks)
-    task['id'] = task_id
+    task['id'] = next_id
+    next_id = next_id + 1
     tasks.append(task)
     return '', 201
 
