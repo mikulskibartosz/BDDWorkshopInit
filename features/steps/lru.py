@@ -65,6 +65,18 @@ def step_impl(context):
     assert context.list.get(1) == context.file_name
 
 
-@then(u'put it in the beginning of the list')
+@then(u'a new file is on the first position')
 def step_impl(context):
     assert context.list.get(0) == context.more_recent_file
+
+
+@given(u'a list with five elements')
+def step_impl(context):
+    context.list = Lru(5)
+    for i in range(context.list.max_length):
+        context.list.add(f'file_{i}')
+
+
+@then(u'the last element is removed')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Then the last element is removed')

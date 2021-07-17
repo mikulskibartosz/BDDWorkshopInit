@@ -13,5 +13,11 @@ Feature: Least Recently Used Files
   Scenario: last file is at the beginning of the list
     Given a list with an element exist
     When we add another file
-    Then put it in the beginning of the list
+    Then a new file is on the first position
     And the previous element is second
+
+  Scenario: a list can contain at most 5 elements
+    Given a list with five elements
+    When we add another file
+    Then a new file is on the first position
+    And the last element is removed
